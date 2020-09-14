@@ -1,3 +1,10 @@
 # AWS Linux :
 
+Step 1
+
 yum update -y && yum install docker -y && service docker start &&  yum install java-1.8* -y && yum install git -y && yum install wget -y && yum install conntrack -y 
+
+step 2 
+
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo && /
+rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key && yum install jenkins -y && service jenkins status &&  service jenkins start
