@@ -7,6 +7,7 @@ pipeline {
 	agent any
 	stages{
 		stage("docker-login"){
+			agent any
 			steps{
 				echo 'git login'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
@@ -19,12 +20,14 @@ pipeline {
 			}
 		}
 		stage("docker-build"){
+			agent any
 			steps{
 				echo 'build in process'
 				sh 'docker build -t shahabajsshaikh/test:0.1 .'			
 			}
 		}
 		stage("docker-push"){
+			agent any
 			steps{
 				echo 'docker pushing started...'
 		
