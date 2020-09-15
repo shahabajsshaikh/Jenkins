@@ -44,7 +44,9 @@ pipeline {
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
 					echo "Login successfully..!"
-					dockerImage.push()
+					script { 
+						dockerImage.push()
+					}
 					echo "Pushed successfully..!"
 				}
 			}
