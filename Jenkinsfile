@@ -27,7 +27,9 @@ pipeline {
 			agent any
 			steps{
 				echo 'build in process'	
-				dockerImage = docker.build "shahabajsshaikh/test"+":$BUILD_NUMBER"
+				script { 
+					dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+				}
 				echo ("$dockerImage")
 				// docker.build registry + 
 				//dockerImage = docker.build registry + ":$BUILD_NUMBER"		
