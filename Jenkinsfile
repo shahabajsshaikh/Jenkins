@@ -4,6 +4,10 @@
 // ENV Veriable: you can get all details via ====> http://<public-ip>:8080/env-vars.html/
 
 pipeline {
+	 environment {
+		 registry = "shahabajsshaikh/test"  
+		 dockerImage = ''
+	 }
 	agent any
 	stages{
 		stage("docker-login"){
@@ -22,8 +26,8 @@ pipeline {
 		stage("docker-build"){
 			agent any
 			steps{
-				echo 'build in process'
-				sh 'docker build -t shahabajsshaikh/test:0.1 .'			
+				echo 'build in process'				
+				dockerImage = docker.build registry + ":$BUILD_NUMBER"		
 			}
 		}
 		stage("docker-push"){
@@ -35,10 +39,11 @@ pipeline {
 				sh 'docker images'
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
+					echo "login successfully..!"
 					
 					dockerImage.push()
     				// some block
-					echo "login successfully..!"
+					echo "pushed successfully..!"
 				}
 				/*sh 'docker build -t .'
 				sh 'docker push'*/
