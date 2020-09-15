@@ -6,7 +6,7 @@
 pipeline {
 	 environment {
 		 registry = "shahabajsshaikh/test"  
-		 dockerImage = ''
+		 //dockerImage = ''
 	 }
 	agent any
 	stages{
