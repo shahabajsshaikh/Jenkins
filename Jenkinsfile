@@ -28,7 +28,7 @@ pipeline {
 			steps{
 				echo 'build in process'	
 				script { 
-					dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+					def dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 				}
 				echo ("$dockerImage")
 				// docker.build registry + 
