@@ -1,7 +1,11 @@
 /* Basic pipeline for multi-branch refer : https://www.youtube.com/watch?v=7KCS70sCoK0 */
 
+
+// ENV Veriable: you can get all details via ====> http://<public-ip>:8080/env-vars.html/
+
 CODE_CHANGE = getGitChanges() // it for check any code changes in git
 BRANCH_NAME = 'BRANCH_NAME_VERIABLE'
+
 pipeline {
 	agent any
 	stages{
