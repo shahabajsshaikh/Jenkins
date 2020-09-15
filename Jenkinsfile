@@ -32,7 +32,7 @@ pipeline {
 				echo 'docker pushing started...'
 		
 				sh 'pwd && ls'
-				sh 'docker images && docker push shahabajsshaikh/test:0.1'
+				sh 'docker images'
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
 					
