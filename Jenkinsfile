@@ -6,22 +6,28 @@
 pipeline {
 	agent any
 	stages{
-		stage("docker-build"){
+		stage("docker-login"){
 			steps{
 				echo 'git clone'
-				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
+				/*git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'*/
+				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
+    				// some block
+				echo "login successfully..!"
+				}	
+			}
+		}
+		stage("docker-build"){
+			steps{
+				echo 'build in process'
+				sh 'docker build -t shahabajsshaikh/test:0.1 .				
 			}
 		}
 		stage("docker-push"){
 			steps{
-				echo 'docker build started...'
-				// This step should not normally be used in your script. Consult the inline help for details.
-				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
-    				// some block
-				echo "login successfully..!"
-				}
+				echo 'docker pushing started...'
+		
 				sh 'pwd && ls'
-				sh 'docker info && docker ps'
+				sh 'docker images && docker push shahabajsshaikh/test:0.1'
 				/*sh 'docker build -t .'
 				sh 'docker push'*/
 			}
