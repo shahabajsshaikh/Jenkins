@@ -41,13 +41,10 @@ pipeline {
 				echo 'docker pushing started...'
 				sh 'pwd && ls'
 				sh 'docker images'
-				
-				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
-					echo "Login successfully..!"
-					
-					sleep time: 5, unit: 'MICROSECONDS'
-					
-					script { 
+				script { 	
+					withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
+						echo "Login successfully..!"
+						sleep time: 5, unit: 'MICROSECONDS'
 						echo ("before")
 						dockerImage.push()
 						echo ("after")
