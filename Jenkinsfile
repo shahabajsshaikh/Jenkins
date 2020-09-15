@@ -17,7 +17,7 @@ pipeline {
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
 				
 				echo 'docker login'
-				withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/'){ //https://registry.hub.docker.com/
+				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){ //
     				// some block
 				echo "login successfully..!"
 				}	
@@ -28,7 +28,7 @@ pipeline {
 			steps{
 				echo 'build in process'	
 				script { 
-					def dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+					dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 				}
 				echo ("$dockerImage")
 				// docker.build registry + 
