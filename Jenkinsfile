@@ -15,6 +15,7 @@ pipeline {
 		stage("docker-push"){
 			steps{
 				echo 'docker build started...'
+				sh 'pwd && ls'
 				sh 'docker info && docker ps'
 				/*sh 'docker build -t .'
 				sh 'docker push'*/
