@@ -36,7 +36,7 @@ pipeline {
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
 					
-					dockerImage.push('docker push shahabajsshaikh/test:0.1')
+					dockerImage.push(docker push shahabajsshaikh/test:0.1)
     				// some block
 					echo "login successfully..!"
 				}
