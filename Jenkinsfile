@@ -15,6 +15,11 @@ pipeline {
 		stage("docker-push"){
 			steps{
 				echo 'docker build started...'
+				// This step should not normally be used in your script. Consult the inline help for details.
+				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
+    				// some block
+				echo "login successfully..!"
+				}
 				sh 'pwd && ls'
 				sh 'docker info && docker ps'
 				/*sh 'docker build -t .'
