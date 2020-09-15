@@ -46,7 +46,7 @@ pipeline {
 						echo "Login successfully..!"
 						script {
 							echo ("before")
-							dockerImage.push()
+							dockerImage.push("$BUILD_NUMBER")
 							echo ("after")
 						}
 						
