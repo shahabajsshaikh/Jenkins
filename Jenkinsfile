@@ -10,6 +10,7 @@ pipeline {
 			steps{
 				echo 'git login'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
+				
 				echo 'docker login'
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
     				// some block
@@ -20,7 +21,7 @@ pipeline {
 		stage("docker-build"){
 			steps{
 				echo 'build in process'
-				sh 'docker build -t shahabajsshaikh/test:0.1 .				
+				sh 'docker build -t shahabajsshaikh/test:0.1 .'			
 			}
 		}
 		stage("docker-push"){
