@@ -1,4 +1,4 @@
-/* Basic pipeline */
+/* Basic pipeline for multi-branch refer : https://www.youtube.com/watch?v=7KCS70sCoK0 */
 
 pipeline {
 	agent any
