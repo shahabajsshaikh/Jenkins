@@ -44,8 +44,13 @@ pipeline {
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
 					echo "Login successfully..!"
+					
+					sleep time: 5, unit: 'MICROSECONDS'
+					
 					script { 
+						echo ("before")
 						dockerImage.push()
+						echo ("after")
 					}
 					echo "Pushed successfully..!"
 				}
