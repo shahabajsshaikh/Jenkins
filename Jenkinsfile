@@ -36,7 +36,7 @@ pipeline {
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
 					
-					sh 'docker push shahabajsshaikh/test:0.1'
+					bat 'docker push shahabajsshaikh/test:0.1'
     				// some block
 					echo "login successfully..!"
 				}
