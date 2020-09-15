@@ -26,15 +26,15 @@ pipeline {
 		stage("docker-build"){
 			agent any
 			steps{
-				echo 'build in process'				
-				dockerImage = docker.build registry + ":$BUILD_NUMBER"		
+				echo 'build in process'	
+				dockerImage = docker.build($registry)
+				//dockerImage = docker.build registry + ":$BUILD_NUMBER"		
 			}
 		}
 		stage("docker-push"){
 			agent any
 			steps{
 				echo 'docker pushing started...'
-		
 				sh 'pwd && ls'
 				sh 'docker images'
 				
@@ -43,8 +43,6 @@ pipeline {
 					dockerImage.push()
 					echo "Pushed successfully..!"
 				}
-				/*sh 'docker build -t .'
-				sh 'docker push'*/
 			}
 		}
 	}
