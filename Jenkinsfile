@@ -5,14 +5,14 @@ pipeline {
 	stages{
 		stage('docker-build')
 		{
-			step{
+			steps{
 				echo 'git clone'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
 			}
 		}
 		stage('docker-push')
 		{
-			step{
+			steps{
 				echo 'docker build started...'
 				sh 'docker info'
 				sh 'docker build -t .'
