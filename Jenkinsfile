@@ -28,6 +28,8 @@ pipeline {
 			steps{
 				echo 'build in process'	
 				dockerImage = docker.build("shahabajsshaikh/test")
+				echo ("$dockerImage")
+				// docker.build registry + 
 				//dockerImage = docker.build registry + ":$BUILD_NUMBER"		
 			}
 		}
@@ -40,7 +42,7 @@ pipeline {
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
 					echo "Login successfully..!"
-					dockerImage.push()
+					//dockerImage.push()
 					echo "Pushed successfully..!"
 				}
 			}
