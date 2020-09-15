@@ -39,11 +39,9 @@ pipeline {
 				sh 'docker images'
 				
 				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
-					echo "login successfully..!"
-					
+					echo "Login successfully..!"
 					dockerImage.push()
-    				// some block
-					echo "pushed successfully..!"
+					echo "Pushed successfully..!"
 				}
 				/*sh 'docker build -t .'
 				sh 'docker push'*/
