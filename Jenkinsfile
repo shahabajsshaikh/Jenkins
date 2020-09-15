@@ -1,4 +1,5 @@
-# Basic pipeline:
+/* Basic pipeline */
+
 pipeline {
 	agent any
 	stages{
