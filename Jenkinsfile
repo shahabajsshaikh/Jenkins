@@ -16,11 +16,7 @@ pipeline {
 				echo 'git login'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
 				
-				echo 'docker login'
-				withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){ //
-    				// some block
-				echo "login successfully..!"
-				}	
+				echo 'docker login'	
 			}
 		}
 		stage("docker-build"){
