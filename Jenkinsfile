@@ -15,7 +15,7 @@ pipeline {
 			steps{
 				echo 'git login'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
-				
+				sh 'ls && pwd'
 				echo 'docker login'	
 			}
 		}
