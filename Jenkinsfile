@@ -10,13 +10,21 @@ pipeline {
 	 }
 	agent any
 	stages{
-		stage("docker-login"){
+		stage("Git-clone"){
 			agent any
 			steps{
 				echo 'git login'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
 				sh 'ls && pwd'
 				echo 'docker login'	
+			}
+		}
+		stage("Build"){
+			agent any
+			steps{
+				echo 'Build start'
+				sh 'mvn clean install'
+				echo 'Build done sucessfully'	
 			}
 		}
 		stage("docker-build"){
