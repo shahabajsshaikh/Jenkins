@@ -38,8 +38,8 @@ pipeline {
 				sh 'pwd && ls'
 				sh 'docker images'
 				script { 	
-					withDockerRegistry(credentialsId: 'docker', url: 'https://registry.hub.docker.com/'){
-						echo "Login successfully..!"
+					withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/'){
+						echo "Login successfully..!" //  https://registry.hub.docker.com/
 						script {
 							echo ("before")
 							dockerImage.push("$BUILD_NUMBER")
