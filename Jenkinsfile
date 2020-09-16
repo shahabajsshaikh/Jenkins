@@ -49,6 +49,8 @@ pipeline {
 						sleep time: 5, unit: 'MICROSECONDS'
 					}
 					echo "Pushed successfully..!"
+					sh 'docker rmi -f $(docker images -a -q)'
+					echo "Remove images successfully..!"
 				}
 			}
 		}
