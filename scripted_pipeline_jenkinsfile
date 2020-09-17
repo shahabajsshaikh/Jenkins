@@ -6,7 +6,7 @@ node {
   }
 }
 stage('step-2') {  
-  docker.image('httpd').inside {
+  docker.image('httpd').inside ('-it') {
     sh 'ls -la'
   }
 }
