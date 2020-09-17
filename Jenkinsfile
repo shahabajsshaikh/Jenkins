@@ -96,6 +96,6 @@ pipeline {
 		sh "ls -la"
 		//sh "git clone https://Shabadmin@bitbucket.org/Shabadmin/dev-env.git"
 	}
-        //archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'
+        archiveArtifacts '** /target/spring-boot-web-jsp-1.0.war'
         //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
 }*/
