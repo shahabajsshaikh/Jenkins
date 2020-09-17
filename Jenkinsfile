@@ -21,12 +21,11 @@ pipeline {
 		stage("Conatiner"){
 			agent any
 			steps{
-				def image = docker.image('shahabajsshaikh/openjdk8:0.0')
-				image.pull()
-				image.inside() {
-					sh 'ls && pwd '
-					// my other logic
-				}			
+				docker.image('shahabajsshaikh/openjdk8:0.0').withRun('-d=true'){
+					docker.image('shahabajsshaikh/openjdk8:0.0').inside{
+						sh 'ls'
+					}
+				}	
 			}
 		}
 		stage("Build"){
