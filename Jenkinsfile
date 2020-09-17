@@ -72,7 +72,7 @@ pipeline {
 
 def buildApp() {
 	script { 
-		docker.image('shahabajsshaikh/openjdk8:0.0').inside {'ls'}
+		docker.image('shahabajsshaikh/openjdk8:0.0').inside { sh 'ls'}
 		//withDockerContainer("shahabajsshaikh/openjdk8:0.0"){
 			
 			//sh 'ls && pwd'
