@@ -42,7 +42,7 @@ pipeline {
 			agent any
 			steps{
 				echo 'Build start'
-				sh 'cd dev-env && mvn clean install'
+				//sh 'cd dev-env && mvn clean install'
 				echo 'Build done sucessfully'	
 			}
 		}
