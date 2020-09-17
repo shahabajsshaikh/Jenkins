@@ -6,7 +6,7 @@ stages {
         steps {
             script{
                 sh 'docker run -d --name demo2 shahabajsshaikh/openjdk8:0.0'
-                sh "docker exec -it demo2 bash -c 'ls'" 
+                sh "docker exec -i demo2 bash -c 'ls'" 
             }
         }
     }
