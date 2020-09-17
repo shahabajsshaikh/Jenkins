@@ -21,9 +21,7 @@ pipeline {
 		stage("Conatiner"){
 			agent any
 			steps{
-				docker.image('shahabajsshaikh/openjdk8:0.0').withRun('-it'){ 
-					docker.image('shahabajsshaikh/openjdk8:0.0').inside{ sh 'ls' }	
-				}
+				 buildApp()
 			}
 			
 		}
@@ -68,6 +66,16 @@ pipeline {
 					echo "Remove images successfully..!"
 				}
 			}
+		}
+	}
+}
+
+def buildApp() {
+	node('dockers'){
+		def maven = docker.image('shahabajsshaikh/openjdk8:0.0')
+		maven.pull()
+		maven.inside {
+			sh 'ls
 		}
 	}
 }
