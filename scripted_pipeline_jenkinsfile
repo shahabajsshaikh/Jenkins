@@ -6,7 +6,7 @@ stages {
         steps {
             script{
                 docker.image('httpd').inside{ 
-                    sh 'pwd'
+                    sh 'pwd && ls'
                 }
             }
         }
