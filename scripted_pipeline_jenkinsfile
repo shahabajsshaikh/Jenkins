@@ -3,7 +3,7 @@ node {
   
   docker.image('shahabajsshaikh/openjdk8:0.0').inside {
   
-  sh 'ls && mvn --version
+  sh 'ls && mvn --version'
   
   }
   
