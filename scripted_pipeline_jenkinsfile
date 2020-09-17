@@ -1,12 +1,8 @@
 node {
-  stage('Source') {
-  
-  docker.image('shahabajsshaikh/openjdk8:0.0').inside {
-  
-  sh 'ls && mvn --version'
-  
+  stage('Source') {  
+  docker.image('shahabajsshaikh/openjdk8:0.0').withRun {c ->
+    sh 'ls -la'
   }
-  
-  }
+}
 
 }
