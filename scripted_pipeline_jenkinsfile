@@ -6,7 +6,7 @@ stages {
         steps {
             script{
                                
-                sh "docker run --name demo -i httpd bash -c 'ls'"
+                sh "docker run --name demo -i shahabajsshaikh/openjdk8:0.0 bash -c 'ls'"
                 sh "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)"
             }
         }
