@@ -19,6 +19,13 @@ pipeline {
 				echo 'docker login'	
 			}
 		}
+		stage("In-docker-conatiner"){
+			withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
+				// some block
+				sh 'ls && pwd'
+			}
+		
+		}
 		stage("Build"){
 			agent any
 			steps{
