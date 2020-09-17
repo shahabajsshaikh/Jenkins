@@ -1,32 +1,23 @@
-node {
-  stage('step-1') {  
-  docker.image('shahabajsshaikh/openjdk8:0.0').withRun {c ->
-    sh 'ls -la'
-    sh 'pwd'
-  }
-}
-stage('step-2') {  
-  docker.image('httpd').inside {
-    sh 'ls -la'
-  }
-}
-stage('step-3') {  
-  def maven = docker.image('httpd')
-  maven.pull()
-  maven.inside {
-    sh 'pwd & ls -la'
-  }
-}
-
-stage('step-4') {  
-    steps{
-
-      git https://github.com/shahabajsshaikh/Jenkins.git
-
-      def img = docker.build 'test:1'
-      img.inside { sh 'pwd & ls -la' }
+pipeline {
+    agent none
+    stages {
+        stage('Build') {
+            agent {
+                docker { image 'httpd' }
+            }
+            steps {
+                sh "pwd"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-}
-
-
 }
