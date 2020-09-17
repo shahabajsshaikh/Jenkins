@@ -22,7 +22,7 @@ pipeline {
 			agent any
 			step{
 				withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
-					sh 'ls -la
+					sh 'ls -la'
 				}
 			}
 		}
