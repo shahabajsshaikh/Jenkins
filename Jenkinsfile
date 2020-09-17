@@ -19,11 +19,13 @@ pipeline {
 			}
 		}
 		stage("Conatiner"){
-			agent any
-			steps{
-				withDockerContainer(args: 'run -it', image: 'shahabajsshaikh/openjdk8:0.0'){
-					sh 'ls -la'
+			agent{
+				docker {
+					image 'shahabajsshaikh/openjdk8:0.0'
 				}
+				steps{
+					sh 'ls -la'				
+				}	
 			}
 		}
 		stage("Build"){
