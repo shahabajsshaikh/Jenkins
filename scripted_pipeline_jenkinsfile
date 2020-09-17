@@ -18,5 +18,12 @@ stage('step-3') {
   }
 }
 
+stage('step-4') {  
+  def img = docker.build 'test:1'
+  img.inside {
+    sh 'pwd & ls -la'
+  }
+}
+
 
 }
