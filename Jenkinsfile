@@ -85,7 +85,7 @@ pipeline {
 }
 
 def buildApp() {
-	withDockerContainer("shahabajsshaikh/openjdk8:0.0") { sh "ls && pwd"}
+	withDockerContainer("shahabajsshaikh/openjdk8:0.0") { sh "curl --version"}
         //archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'
         //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
 }
