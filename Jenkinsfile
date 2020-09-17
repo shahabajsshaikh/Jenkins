@@ -21,7 +21,7 @@ pipeline {
 		}
 		stage("In-docker-conatiner"){
 			steps{
-				withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
+				withDockerContainer(args: 'exec -it ', image: 'shahabajsshaikh/openjdk8:0.0'){
 					// some block
 					echo 'you are in container?'
 					sh 'ls && pwd'
