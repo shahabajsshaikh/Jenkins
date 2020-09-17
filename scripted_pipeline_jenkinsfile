@@ -21,7 +21,7 @@ stage('step-3') {
 stage('step-4') {  
     steps{
 
-      git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
+      git https://github.com/shahabajsshaikh/Jenkins.git
 
       def img = docker.build 'test:1'
       img.inside { sh 'pwd & ls -la' }
