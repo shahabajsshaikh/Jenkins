@@ -18,7 +18,7 @@ pipeline {
 				echo '********************************Git-clone completed..!********************************'	
 			}
 		}
-		stage("In-docker-conatiner"){
+		stage("Conatiner"){
 			agent any
 			step{
 				withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
@@ -69,5 +69,3 @@ pipeline {
 			}
 		}
 	}
-}
-
