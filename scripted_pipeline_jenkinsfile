@@ -1,9 +1,15 @@
 node {
-  stage('Source') {  
+  stage('step-1') {  
   docker.image('shahabajsshaikh/openjdk8:0.0').withRun {c ->
     sh 'ls -la'
     sh 'pwd'
   }
 }
+stage('step-2') {  
+  docker.image('httpd').inside {
+    sh 'ls -la'
+  }
+}
+
 
 }
