@@ -5,7 +5,8 @@ stages {
     stage('Build in Docker') {
         steps {
             script{
-                sh 'docker run -i shahabajsshaikh/openjdk8:0.0 bash && ls'
+                sh 'docker run -d --name demo1 shahabajsshaikh/openjdk8:0.0'
+                sh "docker exec -it demo1 bash -c 'ls'" 
             }
         }
     }
