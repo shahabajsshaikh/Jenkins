@@ -2,7 +2,7 @@
 
 Step 1
 
-yum update -y && yum install docker -y && service docker start &&  yum install java-1.8* -y && yum install git -y && yum install wget -y && yum install conntrack -y 
+yum update -y && yum install docker -y && service docker start &&  yum install java-1.8* -y && yum install git -y && yum install wget -y && yum install conntrack -y && chmod +777 /var/run/docker.sock
 
 step 2 
 
