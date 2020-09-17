@@ -21,7 +21,7 @@ pipeline {
 		stage("Conatiner"){
 			agent any
 			steps{
-				withDockerContainer(args: 'run -it', image: 'shahabajsshaikh/openjdk8:0.0', toolName: 'docker'){
+				withDockerContainer(args: 'run -it', image: 'shahabajsshaikh/openjdk8:0.0'){
 					sh 'ls -la'
 				}
 			}
