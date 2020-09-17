@@ -1,2 +1,7 @@
-node {
+node ('node-1') {
+  stage('Source') {
+  
+  echo 'source'
+  }
+
 }
