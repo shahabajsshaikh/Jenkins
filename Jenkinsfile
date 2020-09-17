@@ -19,16 +19,15 @@ pipeline {
 			}
 		}
 		stage("Conatiner"){
-			agent{
-				docker {
-					image 'shahabajsshaikh/openjdk8:0.0'
-				}
-			}
+			agent any
 			steps{
-				checkout scm
-				sh 'mvn --version'				
-			}	
-			
+				def image = docker.image('shahabajsshaikh/openjdk8:0.0')
+				image.pull()
+				image.inside() {
+					sh 'ls && pwd '
+					// my other logic
+				}			
+			}
 		}
 		stage("Build"){
 			agent any
