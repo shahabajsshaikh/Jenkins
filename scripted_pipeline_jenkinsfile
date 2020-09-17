@@ -7,6 +7,7 @@ stages {
             script{
                                
                 sh "docker run --name demo -i httpd bash -c 'ls'"
+                sh "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)"
             }
         }
     }
