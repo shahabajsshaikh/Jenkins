@@ -25,7 +25,8 @@ pipeline {
 				}
 			}
 			steps{
-				sh 'ls -la'				
+				checkout scm
+				sh 'mvn --version'				
 			}	
 			
 		}
