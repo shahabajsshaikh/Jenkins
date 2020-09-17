@@ -1,6 +1,9 @@
 node {
   stage('Source') {
   
+  docker.image('shahabajsshaikh/openjdk8:0.0').inside {
+  sh 'ls'
+}
   echo 'source'
   }
 
