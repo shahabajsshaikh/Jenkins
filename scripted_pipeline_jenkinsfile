@@ -1,4 +1,4 @@
-node ('node-1') {
+node {
   stage('Source') {
   
   echo 'source'
