@@ -85,7 +85,7 @@ pipeline {
 
 def buildApp() {
 	withDockerContainer("shahabajsshaikh/openjdk8:0.0") { 
-		sh "curl --version"
+		sh "mvn --version"
 		sh "pwd"
 		sh "ls -la"
 		//sh "git clone https://Shabadmin@bitbucket.org/Shabadmin/dev-env.git"
