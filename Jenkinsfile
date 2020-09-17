@@ -71,11 +71,18 @@ pipeline {
 }
 
 def buildApp() {
-	node('dockers'){
+	script { 
+		withDockerContainer("shahabajsshaikh/openjdk8:0.0"){
+			sh 'ls && pwd'
+		}
+	}
+}
+	
+	/* node('dockers'){
 		def maven = docker.image('shahabajsshaikh/openjdk8:0.0')
 		maven.pull()
 		maven.inside {
 			sh 'ls'
-		}
+		}*/
 	}
 }
