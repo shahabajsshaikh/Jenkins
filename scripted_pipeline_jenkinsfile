@@ -1,7 +1,8 @@
 node {
   stage('Source') {
   
-  docker.image('shahabajsshaikh/openjdk8:0.0').inside {
+  /*docker.image('shahabajsshaikh/openjdk8:0.0').inside */
+  def maven = docker.image('shahabajsshaikh/openjdk8:0.0'){
   sh 'ls'
 }
   echo 'source'
