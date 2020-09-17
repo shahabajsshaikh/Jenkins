@@ -19,27 +19,30 @@ pipeline {
 				echo '********************************Git-clone completed..!********************************'	
 			}
 		}
-		stage("In-docker-conatiner"){
-			agent any
-			steps{
-				echo '********************************Stage-2********************************'
-				//withDockerContainer(args: 'exec -it', image: 'shahabajsshaikh/openjdk8:0.0'){
-				docker.image('shahabajsshaikh/openjdk8:0.0').inside{
-					stage("buils-inside"){
-						echo 'inside?'
-						sh 'ls && pwd'
-						echo '??????'
-					
-					}
-					// some block
-					//echo 'you are in container?'
-					//sh 'ls && pwd'
-					echo '********************************Stage-2 completed..!********************************'
-				}
 		
+		node('docker'){	
+			stage("In-docker-conatiner"){
+				agent any
+				steps{
+					echo '********************************Stage-2********************************'
+					withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
+						sh 'ls && pwd
+					//docker.image('shahabajsshaikh/openjdk8:0.0').inside{
+						/*stage("buils-inside"){
+							echo 'inside?'
+							sh 'ls && pwd'
+							echo '??????'
+
+						}*/
+						// some block
+						//echo 'you are in container?'
+						//sh 'ls && pwd'
+						echo '********************************Stage-2 completed..!********************************'
+					}
+
+				}
 			}
 		}
-		
 		stage("Build"){
 			agent any
 			steps{
