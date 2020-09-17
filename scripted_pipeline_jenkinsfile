@@ -5,9 +5,8 @@ stages {
     stage('Build in Docker') {
         steps {
             script{
-                sh 'docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-                sh 'docker run -d --name demo shahabajsshaikh/openjdk8:0.0'
-                sh "docker exec -i demo bash -c 'ls'" 
+                               
+                sh "docker run --name demo -i httpd bash -c 'ls'"
             }
         }
     }
