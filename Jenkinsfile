@@ -20,7 +20,12 @@ pipeline {
 		}
 		stage("In-docker-conatiner"){
 			agent any
-			steps{	buildApp()  }
+			steps{	//buildApp()  
+				docker {image 'shahabajsshaikh/openjdk8:0.0'}			
+			}
+			steps{
+				sh 'ls && pwd'			
+			}
 			/*steps{
 				echo '********************************Stage-2********************************'
 				withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
@@ -83,7 +88,8 @@ pipeline {
 	}
 }
 
-def buildApp() {
+/*def buildApp() {
+	
 	withDockerContainer("shahabajsshaikh/openjdk8:0.0") { 
 		sh "mvn --version"
 		sh "pwd"
@@ -92,4 +98,4 @@ def buildApp() {
 	}
         //archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'
         //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
-}
+}*/
