@@ -20,29 +20,28 @@ pipeline {
 			}
 		}
 		
-		node('docker'){	
-			stage("In-docker-conatiner"){
-				agent any
-				steps{
-					echo '********************************Stage-2********************************'
-					withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
+		stage("In-docker-conatiner"){
+			agent any
+			steps{
+				echo '********************************Stage-2********************************'
+				withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
+					sh 'ls && pwd'
+				//docker.image('shahabajsshaikh/openjdk8:0.0').inside{
+					/*stage("buils-inside"){
+						echo 'inside?'
 						sh 'ls && pwd'
-					//docker.image('shahabajsshaikh/openjdk8:0.0').inside{
-						/*stage("buils-inside"){
-							echo 'inside?'
-							sh 'ls && pwd'
-							echo '??????'
+						echo '??????'
 
-						}*/
-						// some block
-						//echo 'you are in container?'
-						//sh 'ls && pwd'
-						echo '********************************Stage-2 completed..!********************************'
-					}
-
+					}*/
+					// some block
+					//echo 'you are in container?'
+					//sh 'ls && pwd'
+					echo '********************************Stage-2 completed..!********************************'
 				}
+
 			}
 		}
+		
 		stage("Build"){
 			agent any
 			steps{
