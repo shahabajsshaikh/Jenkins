@@ -25,9 +25,15 @@ pipeline {
 				echo '********************************Stage-2********************************'
 				//withDockerContainer(args: 'exec -it', image: 'shahabajsshaikh/openjdk8:0.0'){
 				docker.image('shahabajsshaikh/openjdk8:0.0').inside{
+					stage("buils-inside"){
+						echo 'inside?'
+						sh 'ls && pwd'
+						echo '??????'
+					
+					}
 					// some block
-					echo 'you are in container?'
-					sh 'ls && pwd'
+					//echo 'you are in container?'
+					//sh 'ls && pwd'
 					echo '********************************Stage-2 completed..!********************************'
 				}
 		
