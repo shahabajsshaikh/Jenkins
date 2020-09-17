@@ -21,10 +21,8 @@ pipeline {
 		stage("Conatiner"){
 			agent any
 			steps{
-				docker.image('shahabajsshaikh/openjdk8:0.0').withRun('-d=true'){
-					docker.image('shahabajsshaikh/openjdk8:0.0').inside{
-						sh 'ls'
-					}
+				docker.image('shahabajsshaikh/openjdk8:0.0').inside{
+					sh 'ls'
 				}	
 			}
 		}
