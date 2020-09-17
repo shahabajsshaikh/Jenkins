@@ -76,13 +76,13 @@ def buildApp() {
 			sh 'ls && pwd'
 		}
 	}
-}
+
 	
 	/* node('dockers'){
 		def maven = docker.image('shahabajsshaikh/openjdk8:0.0')
 		maven.pull()
 		maven.inside {
 			sh 'ls'
-		}*/
-	}
+		}
+	}*/
 }
