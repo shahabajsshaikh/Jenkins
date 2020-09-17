@@ -20,8 +20,10 @@ pipeline {
 		}
 		stage("In-docker-conatiner"){
 			agent any
-			steps{	//buildApp()  
-				docker { image 'shahabajsshaikh/openjdk8:0.0' }			
+			steps{	//buildApp() 
+				agent{
+					docker { image 'shahabajsshaikh/openjdk8:0.0' }			
+				}
 			}
 			steps{
 				sh 'ls && pwd'			
