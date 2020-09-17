@@ -13,19 +13,20 @@ pipeline {
 		stage("Git-clone"){
 			agent any
 			steps{
-				echo 'git login'
+				echo '********************************Stage-1********************************'
 				git credentialsId: 'github', url: 'https://github.com/shahabajsshaikh/Jenkins.git'
 				sh 'ls && pwd'
-				echo 'docker login'	
+				echo '********************************Git-clone completed..!********************************'	
 			}
 		}
 		stage("In-docker-conatiner"){
 			steps{
+				echo '********************************Stage-2********************************'
 				withDockerContainer(args: 'exec -it ', image: 'shahabajsshaikh/openjdk8:0.0'){
 					// some block
 					echo 'you are in container?'
 					sh 'ls && pwd'
-					echo 'yes/no'
+					echo '********************************Stage-2 completed..!********************************'
 				}
 		
 			}
