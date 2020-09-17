@@ -23,10 +23,11 @@ pipeline {
 				docker {
 					image 'shahabajsshaikh/openjdk8:0.0'
 				}
-				steps{
-					sh 'ls -la'				
-				}	
 			}
+			steps{
+				sh 'ls -la'				
+			}	
+			
 		}
 		stage("Build"){
 			agent any
