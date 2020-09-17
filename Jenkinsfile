@@ -23,7 +23,8 @@ pipeline {
 			agent any
 			steps{
 				echo '********************************Stage-2********************************'
-				withDockerContainer(args: 'exec -it', image: 'shahabajsshaikh/openjdk8:0.0'){
+				//withDockerContainer(args: 'exec -it', image: 'shahabajsshaikh/openjdk8:0.0'){
+				docker.image('shahabajsshaikh/openjdk8:0.0').inside{
 					// some block
 					echo 'you are in container?'
 					sh 'ls && pwd'
