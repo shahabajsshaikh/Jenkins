@@ -42,7 +42,6 @@ pipeline {
 			agent any
 			steps{
 				echo 'Build start'
-				//sh 'cd dev-env && mvn clean install'
 				echo 'Build done sucessfully'	
 			}
 		}
@@ -85,7 +84,12 @@ pipeline {
 }
 
 def buildApp() {
-	withDockerContainer("shahabajsshaikh/openjdk8:0.0") { sh "curl --version"}
+	withDockerContainer("shahabajsshaikh/openjdk8:0.0") { 
+		sh "curl --version"
+		sh "pwd"
+		sh "ls -la"
+		//sh "git clone https://Shabadmin@bitbucket.org/Shabadmin/dev-env.git"
+	}
         //archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'
         //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
 }
