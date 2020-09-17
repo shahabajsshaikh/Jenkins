@@ -5,9 +5,7 @@ stages {
     stage('Build in Docker') {
         steps {
             script{
-                docker.image('httpd').inside{ 
-                    sh 'pwd && ls'
-                }
+                sh 'docker run -it shahabajsshaikh/openjdk8:0.0 bash && ls'
             }
         }
     }
