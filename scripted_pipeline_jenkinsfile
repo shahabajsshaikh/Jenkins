@@ -1,23 +1,16 @@
+
 pipeline {
-    agent none
-    stages {
-        stage('Build') {
-            agent {
-                docker { image 'httpd' }
-            }
-            steps {
-                sh "pwd"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+agent any
+stages {
+    stage('Build in Docker') {
+        steps {
+            unstash 'scm'
+            script{
+                docker.image('httpd').inside{ 
+                    sh 'pwd'
+                }
             }
         }
     }
+}
 }
