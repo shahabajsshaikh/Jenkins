@@ -6,7 +6,6 @@
 pipeline {
 	 environment {
 		 registry = "shahabajsshaikh/test"  
-		 //dockerImage = ''
 	 }
 	agent any
 	stages{
@@ -19,29 +18,28 @@ pipeline {
 				echo '********************************Git-clone completed..!********************************'	
 			}
 		}
-		
 		stage("In-docker-conatiner"){
 			agent any
 			steps{
+				buildApp()			
+			}
+			/*steps{
 				echo '********************************Stage-2********************************'
 				withDockerContainer('shahabajsshaikh/openjdk8:0.0'){
 					sh 'ls && pwd'
 				//docker.image('shahabajsshaikh/openjdk8:0.0').inside{
-					/*stage("buils-inside"){
+					stage("buils-inside"){
 						echo 'inside?'
 						sh 'ls && pwd'
 						echo '??????'
-
-					}*/
+					}
 					// some block
 					//echo 'you are in container?'
 					//sh 'ls && pwd'
 					echo '********************************Stage-2 completed..!********************************'
 				}
-
-			}
+			}*/
 		}
-		
 		stage("Build"){
 			agent any
 			steps{
@@ -86,4 +84,12 @@ pipeline {
 			}
 		}
 	}
+}
+
+def buildApp() {
+     dir("webapp") {
+        withDockerContainer("shahabajsshaikh/openjdk8:0.0") { sh "ls && pwd"}
+        //archiveArtifacts '**/target/spring-boot-web-jsp-1.0.war'
+        //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
+     }
 }
